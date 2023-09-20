@@ -38,7 +38,7 @@ namespace Meadow.Foundation.FeatherWings
         public bool IgnoreOutOfBoundsPixels { get; set; }
 
         /// <summary>
-        /// The pixel buffer that represents the offscreen buffer
+        /// The pixel buffer that represents the off-screen buffer
         /// Not implemented for this driver
         /// </summary>
         public IPixelBuffer PixelBuffer => this;
@@ -54,7 +54,7 @@ namespace Meadow.Foundation.FeatherWings
         }
 
         /// <summary>
-        /// Clear the RGB LED Matrix offscreen buffer
+        /// Clear the RGB LED Matrix off-screen buffer
         /// </summary>
         /// <param name="updateDisplay">Force a display update if true, false to clear the buffer</param>
         public void Clear(bool updateDisplay = false)
@@ -63,7 +63,7 @@ namespace Meadow.Foundation.FeatherWings
         }
 
         /// <summary>
-        /// Clear the RGB LED Matrix offscreen buffer
+        /// Clear the RGB LED Matrix off-screen buffer
         /// </summary>
         public void Clear()
         {
@@ -189,7 +189,7 @@ namespace Meadow.Foundation.FeatherWings
         }
 
         /// <summary>
-        /// Update a region of the display from the offscreen buffer 
+        /// Update a region of the display from the off-screen buffer 
         /// Currently always redraws the entire display
         /// </summary>
         /// <param name="left">The left bounding position in pixels</param>

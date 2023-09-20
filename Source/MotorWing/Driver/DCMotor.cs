@@ -5,25 +5,6 @@ using System;
 namespace Meadow.Foundation.FeatherWings
 {
     /// <summary>
-    /// Motor commands
-    /// </summary>
-    public enum Commmand
-    {     
-        /// <summary>
-        /// Move forward
-        /// </summary>
-        FORWARD,
-        /// <summary>
-        /// Move backwards
-        /// </summary>
-        BACKWARD,
-        /// <summary>
-        /// Release
-        /// </summary>
-        RELEASE
-    }
-
-    /// <summary>
     /// Represents a DC Motor
     /// </summary>
     public class DCMotor : Motor
@@ -71,7 +52,7 @@ namespace Meadow.Foundation.FeatherWings
 
             }
 
-            Run(Commmand.RELEASE);
+            Run(Command.RELEASE);
 
         }
 
@@ -79,21 +60,21 @@ namespace Meadow.Foundation.FeatherWings
         /// Controls the motor direction/action
         /// </summary>
         /// <param name="command">The action</param>
-        public virtual void Run(Commmand command)
+        public virtual void Run(Command command)
         {
-            if (command == Commmand.FORWARD)
+            if (command == Command.FORWARD)
             {
                 pca9685.SetPin(_in2, false);
                 pca9685.SetPin(_in1, true);
             }
 
-            if (command == Commmand.BACKWARD)
+            if (command == Command.BACKWARD)
             {
                 pca9685.SetPin(_in2, true);
                 pca9685.SetPin(_in1, false);
             }
 
-            if (command == Commmand.RELEASE)
+            if (command == Command.RELEASE)
             {
                 pca9685.SetPin(_in1, false);
                 pca9685.SetPin(_in2, false);
@@ -139,8 +120,27 @@ namespace Meadow.Foundation.FeatherWings
         /// </summary>
         public void Stop()
         {
-            Run(Commmand.RELEASE);
+            Run(Command.RELEASE);
             pca9685.SetPwm(_pwmPin, 0, 0);
         }
+    }
+
+    /// <summary>
+    /// Motor commands
+    /// </summary>
+    public enum Command
+    {
+        /// <summary>
+        /// Move forward
+        /// </summary>
+        FORWARD,
+        /// <summary>
+        /// Move backwards
+        /// </summary>
+        BACKWARD,
+        /// <summary>
+        /// Release
+        /// </summary>
+        RELEASE
     }
 }

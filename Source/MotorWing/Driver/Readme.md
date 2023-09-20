@@ -10,7 +10,7 @@ For more information on developing for Meadow, visit [developer.wildernesslabs.c
 
 ## Usage
 
-```
+```csharp
 MotorWing motorWing;
 
 public override Task Initialize()
@@ -35,8 +35,8 @@ public override async Task Run()
     //Get Stepper motor number 2
     var stepper = motorWing.GetStepper(2, 200);
 
-    dcMotor1.Run(Commmand.FORWARD);
-    dcMotor2.Run(Commmand.BACKWARD);
+    dcMotor1.Run(Command.FORWARD);
+    dcMotor2.Run(Command.BACKWARD);
 
     while (true)
     {

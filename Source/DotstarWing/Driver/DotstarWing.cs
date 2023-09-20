@@ -43,7 +43,7 @@ namespace Meadow.Foundation.FeatherWings
         }
 
         /// <summary>
-        /// Get the offscreen pixel buffer
+        /// Get the off-screen pixel buffer
         /// </summary>
         public IPixelBuffer PixelBuffer => ledMatrix.PixelBuffer;
 
@@ -130,13 +130,13 @@ namespace Meadow.Foundation.FeatherWings
             => ledMatrix.Fill(x, y, width, height, fillColor);
 
         /// <summary>
-        /// Update the display from the offscreen buffer
+        /// Update the display from the off-screen buffer
         /// </summary>
         public void Show()
             => ledMatrix.Show();
 
         /// <summary>
-        /// Update a region of the display from the offscreen buffer 
+        /// Update a region of the display from the off-screen buffer 
         /// </summary>
         /// <param name="left">The left bounding position in pixels</param>
         /// <param name="top">The top bounding position in pixels</param>

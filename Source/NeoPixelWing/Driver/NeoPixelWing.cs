@@ -27,7 +27,7 @@ namespace Meadow.Foundation.FeatherWings
         public int Height => 4;
 
         /// <summary>
-        /// The pixel buffer that represents the offscreen buffer
+        /// The pixel buffer that represents the off-screen buffer
         /// Not implemented for this driver
         /// </summary>
         public IPixelBuffer PixelBuffer { get; protected set; }
@@ -136,7 +136,7 @@ namespace Meadow.Foundation.FeatherWings
         }
 
         /// <summary>
-        /// Update the display from the offscreen buffer
+        /// Update the display from the off-screen buffer
         /// </summary>
         public void Show()
         {
@@ -152,7 +152,7 @@ namespace Meadow.Foundation.FeatherWings
         }
 
         /// <summary>
-        /// Update a region of the display from the offscreen buffer 
+        /// Update a region of the display from the off-screen buffer 
         /// </summary>
         /// <param name="left">The left bounding position in pixels</param>
         /// <param name="top">The top bounding position in pixels</param>

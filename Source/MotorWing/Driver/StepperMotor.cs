@@ -5,44 +5,6 @@ using System.Threading;
 namespace Meadow.Foundation.FeatherWings
 {
     /// <summary>
-    /// Motor style
-    /// </summary>
-    public enum Style
-    {
-        /// <summary>
-        /// Single
-        /// </summary>
-        SINGLE = 1,
-        /// <summary>
-        /// Double
-        /// </summary>
-        DOUBLE = 2,
-        /// <summary>
-        /// Interleave
-        /// </summary>
-        INTERLEAVE = 3,
-        /// <summary>
-        /// Microstep
-        /// </summary>
-        MICROSTEP = 4
-    }
-
-    /// <summary>
-    /// Motor direction
-    /// </summary>
-    public enum Direction
-    {
-        /// <summary>
-        /// Forward motor direction
-        /// </summary>
-        FORWARD,
-        /// <summary>
-        /// Backwards moto direction
-        /// </summary>
-        BACKWARD
-    }
-
-    /// <summary>
     /// Represents a Stepper Motor
     /// </summary>
     public class StepperMotor : Motor
@@ -59,17 +21,16 @@ namespace Meadow.Foundation.FeatherWings
 
         const short MICROSTEPS = 8;
         readonly byte[] _microStepCurve = { 0, 50, 98, 142, 180, 212, 236, 250, 255 };
-        //private readonly int[] microstepcurve = {0,   25,  50,  74,  98,  120, 141, 162, 180,197, 212, 225, 236, 244, 250, 253, 255}//MICROSTEPS == 16
+        //private readonly int[] _microStepCurve = {0,   25,  50,  74,  98,  120, 141, 162, 180,197, 212, 225, 236, 244, 250, 253, 255}//MICROSTEPS == 16
 
         /// <summary>
-        /// Creates a Stepper motor objet un-initialized 
+        /// Creates an uninitialized Stepper motor object
         /// </summary>
         /// <param name="steps">The number of steps per revolution</param>
         /// <param name="num">The Stepper motor port</param>
         /// <param name="pca9685">The PCS968 diver object</param>
         public StepperMotor(int steps, int num, Pca9685 pca9685) : base(pca9685)
         {
-
             if (num == 0) 
             {
                 _pwmA = 8;
@@ -355,4 +316,43 @@ namespace Meadow.Foundation.FeatherWings
 
         }
     }
+
+    /// <summary>
+    /// Motor style
+    /// </summary>
+    public enum Style
+    {
+        /// <summary>
+        /// Single
+        /// </summary>
+        SINGLE = 1,
+        /// <summary>
+        /// Double
+        /// </summary>
+        DOUBLE = 2,
+        /// <summary>
+        /// Interleave
+        /// </summary>
+        INTERLEAVE = 3,
+        /// <summary>
+        /// Microstep
+        /// </summary>
+        MICROSTEP = 4
+    }
+
+    /// <summary>
+    /// Motor direction
+    /// </summary>
+    public enum Direction
+    {
+        /// <summary>
+        /// Forward motor direction
+        /// </summary>
+        FORWARD,
+        /// <summary>
+        /// Backwards motor direction
+        /// </summary>
+        BACKWARD
+    }
+
 }

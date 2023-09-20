@@ -19,7 +19,7 @@ namespace FeatherWings.ServoWing_Sample
 
         public override Task Initialize()
         {
-            Console.WriteLine("Initializng ...");
+            Console.WriteLine("Initializing ...");
 
             servoWing = new ServoWing(Device.CreateI2cBus(I2cBusSpeed.FastPlus));
 

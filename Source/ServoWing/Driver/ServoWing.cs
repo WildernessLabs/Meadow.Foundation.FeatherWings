@@ -78,7 +78,7 @@ namespace Meadow.Foundation.FeatherWings
         {
             if ((portIndex < 0) || (portIndex > portCount))
             {
-                throw new ArgumentException($"Continuous Rotatio Servo num must be between 1 and {portCount}", "num");
+                throw new ArgumentException($"Continuous Rotation Servo num must be between 1 and {portCount}", "num");
             }
 
             var pwm = pca9685.CreatePwmPort(portIndex);

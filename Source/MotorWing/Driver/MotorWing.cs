@@ -57,7 +57,7 @@ namespace Meadow.Foundation.FeatherWings
         /// <summary>
         /// Returns a instance of a DC Motor object
         /// </summary>
-        /// <param name="dcMotorIndex">The motor port we want to use: 1 thru 4 are valid</param>
+        /// <param name="dcMotorIndex">The motor port we want to use: 1 through 4 are valid</param>
         /// <returns>DCMotor</returns>
         public DCMotor GetMotor(short dcMotorIndex)
         {

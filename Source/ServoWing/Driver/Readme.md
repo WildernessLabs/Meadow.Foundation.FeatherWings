@@ -10,13 +10,13 @@ For more information on developing for Meadow, visit [developer.wildernesslabs.c
 
 ## Usage
 
-```
+```csharp
 ServoWing servoWing;
 Servo servo;
 
 public override Task Initialize()
 {
-    Console.WriteLine("Initializng ...");
+    Console.WriteLine("Initializing ...");
 
     servoWing = new ServoWing(Device.CreateI2cBus(I2cBusSpeed.FastPlus));
 
