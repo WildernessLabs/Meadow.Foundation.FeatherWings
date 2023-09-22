@@ -115,8 +115,6 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Meadow.Logging", "..\..\Mea
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Displays.Led.FourteenSegment", "..\..\Meadow.Foundation\Source\Meadow.Foundation.Peripherals\Displays.Led.FourteenSegment\Driver\Displays.Led.FourteenSegment.csproj", "{C84DE610-D39A-42DC-9153-F8884DE3869F}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MQTTnet", "..\..\MQTTnet\Source\MQTTnet\MQTTnet.csproj", "{7D07BBAA-B359-4CD6-A538-520270422210}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -343,10 +341,6 @@ Global
 		{C84DE610-D39A-42DC-9153-F8884DE3869F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C84DE610-D39A-42DC-9153-F8884DE3869F}.Release|Any CPU.Build.0 = Release|Any CPU
 		{C84DE610-D39A-42DC-9153-F8884DE3869F}.Release|Any CPU.Deploy.0 = Release|Any CPU
-		{7D07BBAA-B359-4CD6-A538-520270422210}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{7D07BBAA-B359-4CD6-A538-520270422210}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{7D07BBAA-B359-4CD6-A538-520270422210}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{7D07BBAA-B359-4CD6-A538-520270422210}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -398,7 +392,6 @@ Global
 		{0B716A9F-9461-4750-B68E-3739E473ACBA} = {BB1A7E97-4559-459B-BDF8-4ED41758AB29}
 		{3BFD6004-9E9B-4EB0-B81F-FA1A7D52DB3F} = {BB1A7E97-4559-459B-BDF8-4ED41758AB29}
 		{C84DE610-D39A-42DC-9153-F8884DE3869F} = {BB1A7E97-4559-459B-BDF8-4ED41758AB29}
-		{7D07BBAA-B359-4CD6-A538-520270422210} = {BB1A7E97-4559-459B-BDF8-4ED41758AB29}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {673CD5FD-E4C7-48D7-85EA-3CB6FAD87939}
