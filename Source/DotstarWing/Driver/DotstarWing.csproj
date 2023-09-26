@@ -24,6 +24,6 @@
     <None Include="..\..\icon.png" Pack="true" PackagePath="" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\..\..\Meadow.Foundation\Source\Meadow.Foundation.Peripherals\Leds.Apa102\Driver\Leds.Apa102.csproj" />
+    <PackageReference Include="Meadow.Foundation.Leds.Apa102" Version="*" />
   </ItemGroup>
 </Project>

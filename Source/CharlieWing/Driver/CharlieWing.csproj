@@ -24,6 +24,6 @@
     <None Include="..\..\icon.png" Pack="true" PackagePath="" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\..\..\Meadow.Foundation\Source\Meadow.Foundation.Peripherals\ICs.IOExpanders.Is31fl3731\Driver\ICs.IOExpanders.Is31fl3731.csproj" />
+    <PackageReference Include="Meadow.Foundation.ICs.IOExpanders.Is31fl3731" Version="*" />
   </ItemGroup>
 </Project>
