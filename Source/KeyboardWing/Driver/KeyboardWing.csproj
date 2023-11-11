@@ -24,8 +24,8 @@
     <None Include="..\..\icon.png" Pack="true" PackagePath="" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\..\..\Meadow.Foundation\Source\Meadow.Foundation.Peripherals\Displays.TftSpi\Driver\Displays.TftSpi.csproj" />
-    <ProjectReference Include="..\..\..\..\Meadow.Foundation\Source\Meadow.Foundation.Peripherals\Sensors.Hid.BBQ10Keyboard\Driver\Sensors.Hid.Bbq10Keyboard.csproj" />
-    <ProjectReference Include="..\..\..\..\Meadow.Foundation\Source\Meadow.Foundation.Peripherals\Sensors.Hid.Tsc2004\Driver\Sensors.Hid.Tsc2004.csproj" />
+    <PackageReference Include="Meadow.Foundation.Displays.TftSpi" Version="1.4.0.3" />
+    <PackageReference Include="Meadow.Foundation.Sensors.Hid.Bbq10Keyboard" Version="1.4.0.3" />
+    <PackageReference Include="Meadow.Foundation.Sensors.Hid.Tsc2004" Version="1.4.0.3" />
   </ItemGroup>
 </Project>
