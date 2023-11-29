@@ -30,7 +30,7 @@ namespace NineDofImuWing_Sample
 
             // classical .NET events can also be used for all sensors
             nineDofImuWing.Updated += HandleResult;
-            
+
             // or for individual sensors
             nineDofImuWing.Acceleration3DUpdated += HandleResult;
             nineDofImuWing.AngularVelocity3DUpdated += HandleResult;
@@ -42,8 +42,8 @@ namespace NineDofImuWing_Sample
         }
 
         bool FilterResult(IChangeResult<(
-                Acceleration3D? Acceleration3D, 
-                AngularVelocity3D? AngularVelocity3D, 
+                Acceleration3D? Acceleration3D,
+                AngularVelocity3D? AngularVelocity3D,
                 MagneticField3D? MagneticField3D
             )> result)
         {
@@ -52,8 +52,8 @@ namespace NineDofImuWing_Sample
 
         // Example Event Handler for all sensor results
         void HandleResult(object sender, IChangeResult<(
-                Acceleration3D? Acceleration3D, 
-                AngularVelocity3D? AngularVelocity3D, 
+                Acceleration3D? Acceleration3D,
+                AngularVelocity3D? AngularVelocity3D,
                 MagneticField3D? MagneticField3D
             )> result)
         {
@@ -69,7 +69,7 @@ namespace NineDofImuWing_Sample
         }
 
         // Example Event Handler for any individual sensors' result
-        void HandleResult<UNIT>(object sender, IChangeResult<UNIT> result) 
+        void HandleResult<UNIT>(object sender, IChangeResult<UNIT> result)
         where UNIT : struct
         {
             if (result is IChangeResult<Acceleration3D> accel)

@@ -1,5 +1,4 @@
-﻿using Meadow.Foundation.ICs;
-using Meadow.Foundation.ICs.IOExpanders;
+﻿using Meadow.Foundation.ICs.IOExpanders;
 using System;
 
 namespace Meadow.Foundation.FeatherWings
@@ -8,7 +7,7 @@ namespace Meadow.Foundation.FeatherWings
     /// Motor commands
     /// </summary>
     public enum Commmand
-    {     
+    {
         /// <summary>
         /// Move forward
         /// </summary>

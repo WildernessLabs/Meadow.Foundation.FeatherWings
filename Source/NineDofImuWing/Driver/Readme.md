@@ -1,6 +1,6 @@
-# Meadow.Foundation.NineDofImuWing
+# Meadow.Foundation.FeatherWings.NineDofImuWing
 
-****
+**AdaFruit I2C ST 9-DoF IMU FeatherWing**
 
 The **NineDofImuWing** library is designed for the [Wilderness Labs](www.wildernesslabs.co) Meadow .NET IoT platform and is part of [Meadow.Foundation](https://developer.wildernesslabs.co/Meadow/Meadow.Foundation/).
 
@@ -31,7 +31,7 @@ public override Task Initialize()
 
     // classical .NET events can also be used for all sensors
     nineDofImuWing.Updated += HandleResult;
-    
+
     // or for individual sensors
     nineDofImuWing.Acceleration3DUpdated += HandleResult;
     nineDofImuWing.AngularVelocity3DUpdated += HandleResult;
@@ -43,8 +43,8 @@ public override Task Initialize()
 }
 
 bool FilterResult(IChangeResult<(
-        Acceleration3D? Acceleration3D, 
-        AngularVelocity3D? AngularVelocity3D, 
+        Acceleration3D? Acceleration3D,
+        AngularVelocity3D? AngularVelocity3D,
         MagneticField3D? MagneticField3D
     )> result)
 {
@@ -53,8 +53,8 @@ bool FilterResult(IChangeResult<(
 
 // Example Event Handler for all sensor results
 void HandleResult(object sender, IChangeResult<(
-        Acceleration3D? Acceleration3D, 
-        AngularVelocity3D? AngularVelocity3D, 
+        Acceleration3D? Acceleration3D,
+        AngularVelocity3D? AngularVelocity3D,
         MagneticField3D? MagneticField3D
     )> result)
 {
@@ -70,7 +70,7 @@ void HandleResult(object sender, IChangeResult<(
 }
 
 // Example Event Handler for any individual sensors' result
-void HandleResult<UNIT>(object sender, IChangeResult<UNIT> result) 
+void HandleResult<UNIT>(object sender, IChangeResult<UNIT> result)
 where UNIT : struct
 {
     if (result is IChangeResult<Acceleration3D> accel)

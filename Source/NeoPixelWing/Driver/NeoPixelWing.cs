@@ -2,7 +2,6 @@
 using Meadow.Foundation.Graphics.Buffers;
 using Meadow.Foundation.Leds;
 using Meadow.Hardware;
-using System;
 
 namespace Meadow.Foundation.FeatherWings
 {
@@ -60,7 +59,7 @@ namespace Meadow.Foundation.FeatherWings
         {
             PixelBuffer.Clear();
 
-            if(updateDisplay)
+            if (updateDisplay)
             {
                 Show();
             }
@@ -118,7 +117,7 @@ namespace Meadow.Foundation.FeatherWings
         {
             PixelBuffer.Fill(fillColor);
 
-            if(updateDisplay)
+            if (updateDisplay)
             { Show(); }
         }
 
@@ -140,9 +139,9 @@ namespace Meadow.Foundation.FeatherWings
         /// </summary>
         public void Show()
         {
-            for(int i = 0; i < PixelBuffer.Width; i++)
+            for (int i = 0; i < PixelBuffer.Width; i++)
             {
-                for(int j = 0; j < PixelBuffer.Height; j++)
+                for (int j = 0; j < PixelBuffer.Height; j++)
                 {
                     Leds.SetLed(i + j * Width, PixelBuffer.GetPixel(i, j));
                 }

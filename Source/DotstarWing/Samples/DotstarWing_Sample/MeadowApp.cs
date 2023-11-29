@@ -25,11 +25,11 @@ namespace FeatherWings.DotstarWing_Sample
             Console.WriteLine("Initialize...");
 
             var spiBus = Device.CreateSpiBus();
-            dotStarWing = new DotstarWing(spiBus) 
+            dotStarWing = new DotstarWing(spiBus)
             {
                 Brightness = 0.1f
             };
-            graphics = new MicroGraphics(dotStarWing) 
+            graphics = new MicroGraphics(dotStarWing)
             {
                 CurrentFont = new Font4x6()
             };
@@ -80,9 +80,9 @@ namespace FeatherWings.DotstarWing_Sample
             colors.Add(Color.Purple);
             Random random = new Random();
 
-            for (int y = 0; y< dotStarWing.Height; y++)
+            for (int y = 0; y < dotStarWing.Height; y++)
             {
-                for(int x = 0; x < dotStarWing.Width; x++)
+                for (int x = 0; x < dotStarWing.Width; x++)
                 {
                     int rnd = random.Next(0, colors.Count);
                     dotStarWing.Clear();
