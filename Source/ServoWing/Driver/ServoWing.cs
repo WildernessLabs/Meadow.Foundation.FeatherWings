@@ -10,7 +10,7 @@ namespace Meadow.Foundation.FeatherWings
     /// Represents Adafruit's Feather Servo Wing and 16-Channel 12-bit PWM/Servo Shield
     /// </summary>
     /// <remarks>All PWM channels run at the same Frequency</remarks>
-    public class ServoWing 
+    public class ServoWing
     {
         readonly Pca9685 pca9685;
 
@@ -36,7 +36,7 @@ namespace Meadow.Foundation.FeatherWings
         public ServoWing(
             II2cBus i2cBus,
             Frequency frequency,
-            byte address = (byte)Pca9685.Addresses.Default, 
+            byte address = (byte)Pca9685.Addresses.Default,
             short portCount = 8)
         {
             if (portCount != 8 && portCount != 16)

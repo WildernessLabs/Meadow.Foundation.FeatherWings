@@ -24,8 +24,8 @@
     <None Include="..\..\icon.png" Pack="true" PackagePath="" />
   </ItemGroup>
   <ItemGroup>
-    <PackageReference Include="Meadow.Foundation.Displays.TftSpi" Version="*" />
-    <PackageReference Include="Meadow.Foundation.Sensors.Hid.Bbq10Keyboard" Version="*" />
-    <PackageReference Include="Meadow.Foundation.Sensors.Hid.Tsc2004" Version="*" />
+    <PackageReference Include="Meadow.Foundation.Displays.TftSpi" Version="1.5.0" />
+    <PackageReference Include="Meadow.Foundation.Sensors.Hid.Bbq10Keyboard" Version="1.5.0" />
+    <PackageReference Include="Meadow.Foundation.Sensors.Hid.Tsc2004" Version="1.5.0" />
   </ItemGroup>
 </Project>

@@ -21,7 +21,7 @@ namespace FeatherWings.CharlieWing_Sample
 
             charlieWing = new CharlieWing(Device.CreateI2cBus());
 
-            graphics = new MicroGraphics(charlieWing) 
+            graphics = new MicroGraphics(charlieWing)
             {
                 CurrentFont = new Font4x8()
             };
@@ -65,13 +65,13 @@ namespace FeatherWings.CharlieWing_Sample
             int scollWidth = (int)(-1 * (charlieWing.Width + graphics.CurrentFont.Width + 4));
             int resetWidth = (int)(charlieWing.Width);
             charlieWing.Frame = 0;
-            
+
             while (true)
             {
                 charlieWing.Frame = frameIndex;
                 graphics.Clear();
                 int offset = 0;
-                foreach(var chr in text)
+                foreach (var chr in text)
                 {
                     graphics.DrawText(x + offset, 0, chr.ToString());
                     offset += graphics.CurrentFont.Width;
@@ -115,7 +115,7 @@ namespace FeatherWings.CharlieWing_Sample
             graphics.DrawPixel(7, 4);
 
             byte frameIndex = 0;
-            for(int i = 0; i < 10;i++)
+            for (int i = 0; i < 10; i++)
             {
                 charlieWing.Show(frameIndex);
 

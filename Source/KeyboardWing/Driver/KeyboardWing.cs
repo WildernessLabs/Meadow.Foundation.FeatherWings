@@ -39,10 +39,10 @@ namespace Meadow.Foundation.FeatherWings
         /// <param name="displayChipSelectPin">The chip select pin</param>
         /// <param name="displayDcPin">The DC pin</param>
         /// <param name="lightSensorPin">The light sensor pin</param>
-        public KeyboardWing( 
-            ISpiBus spiBus, 
-            II2cBus i2cBus, 
-            IPin keyboardPin, 
+        public KeyboardWing(
+            ISpiBus spiBus,
+            II2cBus i2cBus,
+            IPin keyboardPin,
             IPin displayChipSelectPin,
             IPin displayDcPin,
             IPin lightSensorPin)

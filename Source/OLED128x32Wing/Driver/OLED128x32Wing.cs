@@ -52,7 +52,7 @@ namespace Meadow.Foundation.FeatherWings
         /// <param name="pinA">The pin used for button A</param>
         /// <param name="pinB">The pin used for button B</param>
         /// <param name="pinC">The pin used for button C</param>
-        public OLED128x32Wing(II2cBus i2cBus, IPin pinA, IPin pinB, IPin pinC) : 
+        public OLED128x32Wing(II2cBus i2cBus, IPin pinA, IPin pinB, IPin pinC) :
             this(i2cBus,
                 pinA.CreateDigitalInterruptPort(InterruptMode.EdgeBoth, ResistorMode.InternalPullUp),
                 pinB.CreateDigitalInterruptPort(InterruptMode.EdgeBoth, ResistorMode.InternalPullUp),

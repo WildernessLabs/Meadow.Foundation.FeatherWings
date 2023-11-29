@@ -1,9 +1,9 @@
-﻿using Meadow.Peripherals.Sensors.Motion;
+﻿using Meadow.Foundation.Sensors.Motion;
 using Meadow.Hardware;
-using Meadow.Foundation.Sensors.Motion;
+using Meadow.Peripherals.Sensors;
+using Meadow.Peripherals.Sensors.Motion;
 using Meadow.Units;
 using System;
-using Meadow.Peripherals.Sensors;
 using System.Threading.Tasks;
 
 namespace Meadow.Foundation.FeatherWings
@@ -87,7 +87,7 @@ namespace Meadow.Foundation.FeatherWings
             Lsm6dsox.StartUpdating(updateInterval);
             Lis3mdl.StartUpdating(updateInterval);
         }
-         
+
         public override void StopUpdating()
         {
             Lsm6dsox.StopUpdating();

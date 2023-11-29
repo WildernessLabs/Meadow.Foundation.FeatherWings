@@ -1,8 +1,8 @@
-﻿using System;
-using Meadow.Foundation.Graphics;
+﻿using Meadow.Foundation.Graphics;
 using Meadow.Foundation.Graphics.Buffers;
 using Meadow.Foundation.ICs.IOExpanders;
 using Meadow.Hardware;
+using System;
 
 namespace Meadow.Foundation.FeatherWings
 {
@@ -155,7 +155,7 @@ namespace Meadow.Foundation.FeatherWings
         {
             for (int i = 0; i < Width; i++)
             {
-                for (int j = 0;j < Height; j++)
+                for (int j = 0; j < Height; j++)
                 {
                     DrawPixel(i, j, fillColor);
                 }
@@ -206,7 +206,7 @@ namespace Meadow.Foundation.FeatherWings
         /// </summary>
         /// <param name="frame">The frame to show (0-7)</param>
         public void Show(byte frame)
-        {   
+        {
             iS31FL3731.DisplayFrame(frame);
         }
     }

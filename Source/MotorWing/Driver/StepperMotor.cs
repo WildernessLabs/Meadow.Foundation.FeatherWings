@@ -70,7 +70,7 @@ namespace Meadow.Foundation.FeatherWings
         public StepperMotor(int steps, int num, Pca9685 pca9685) : base(pca9685)
         {
 
-            if (num == 0) 
+            if (num == 0)
             {
                 _pwmA = 8;
                 _AIN2 = 9;
@@ -88,7 +88,7 @@ namespace Meadow.Foundation.FeatherWings
                 _BIN2 = 6;
                 _BIN1 = 5;
             }
-            else 
+            else
             {
                 throw new ArgumentException("Stepper num must be 0 or 1");
             }
@@ -114,7 +114,7 @@ namespace Meadow.Foundation.FeatherWings
         /// <param name="style">How to perform the step</param>
         public virtual void Step(int steps = 1, Style style = Style.SINGLE)
         {
-            if(steps > 0)
+            if (steps > 0)
             {
                 Step(steps, Direction.FORWARD, style);
             }
@@ -143,7 +143,7 @@ namespace Meadow.Foundation.FeatherWings
                 steps *= MICROSTEPS;
             }
 
-            while(steps >= 0)
+            while (steps >= 0)
             {
                 Step(direction, style);
                 Thread.Sleep(delay);
@@ -324,7 +324,7 @@ namespace Meadow.Foundation.FeatherWings
                 pca9685.SetPin(_AIN2, false);
             }
 
-            if ((latch_state & 0x2)== 0x2)
+            if ((latch_state & 0x2) == 0x2)
             {
                 pca9685.SetPin(_BIN1, true);
             }
@@ -333,7 +333,7 @@ namespace Meadow.Foundation.FeatherWings
                 pca9685.SetPin(_BIN1, false);
             }
 
-            if ((latch_state & 0x4)== 0x4)
+            if ((latch_state & 0x4) == 0x4)
             {
                 pca9685.SetPin(_AIN1, true);
             }
@@ -342,7 +342,7 @@ namespace Meadow.Foundation.FeatherWings
                 pca9685.SetPin(_AIN1, false);
             }
 
-            if ((latch_state & 0x8)== 0x8)
+            if ((latch_state & 0x8) == 0x8)
             {
                 pca9685.SetPin(_BIN2, true);
             }
