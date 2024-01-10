@@ -1,8 +1,8 @@
-# Meadow.Foundation.FeatherWings.OLED128x32Wing
+# Meadow.Foundation.FeatherWings.OLED128x64Wing
 
-**AdaFruit OLED 128x32 monochrome display FeatherWing**
+**AdaFruit OLED 128x64 monochrome display FeatherWing**
 
-The **OLED128x32** library is designed for the [Wilderness Labs](www.wildernesslabs.co) Meadow .NET IoT platform and is part of [Meadow.Foundation](https://developer.wildernesslabs.co/Meadow/Meadow.Foundation/).
+The **OLED128x64** library is designed for the [Wilderness Labs](www.wildernesslabs.co) Meadow .NET IoT platform and is part of [Meadow.Foundation](https://developer.wildernesslabs.co/Meadow/Meadow.Foundation/).
 
 The **Meadow.Foundation** peripherals library is an open-source repository of drivers and libraries that streamline and simplify adding hardware to your C# .NET Meadow IoT application.
 
@@ -13,7 +13,7 @@ To view all Wilderness Labs open-source projects, including samples, visit [gith
 ## Usage
 
 ```csharp
-OLED128x32Wing oledWing;
+OLED128x64Wing oledWing;
 MicroGraphics graphics;
 
 public override Task Initialize()
@@ -21,16 +21,18 @@ public override Task Initialize()
     Resolver.Log.Info("Initializing...");
     var i2cBus = Device.CreateI2cBus(I2cBusSpeed.FastPlus);
 
-    oledWing = new OLED128x32Wing(i2cBus, Device.Pins.D11, Device.Pins.D10, Device.Pins.D09);
+    oledWing = new OLED128x64Wing(i2cBus, Device.Pins.D11, Device.Pins.D10, Device.Pins.D09);
 
     graphics = new MicroGraphics(oledWing.Display);
-    graphics.CurrentFont = new Font12x16();
+    // Use RotationType.Default for "native" screen orientation or RotationType._90Degrees for "wide" orientation.
+    graphics.Rotation = RotationType._90Degrees;
+    graphics.CurrentFont = new Font8x8();
 
     oledWing.ButtonA.Clicked += (sender, e) => UpdateDisplay("A Clicked");
     oledWing.ButtonB.Clicked += (sender, e) => UpdateDisplay("B Clicked");
     oledWing.ButtonC.Clicked += (sender, e) => UpdateDisplay("C Clicked");
-    UpdateDisplay("Ready");
 
+    UpdateDisplay("Ready");
     return Task.CompletedTask;
 }
 

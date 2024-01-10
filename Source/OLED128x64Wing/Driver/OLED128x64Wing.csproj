@@ -9,21 +9,21 @@
     <Authors>Wilderness Labs, Inc</Authors>
     <TargetFramework>netstandard2.1</TargetFramework>
     <OutputType>Library</OutputType>
-    <AssemblyName>MotorWing</AssemblyName>
+    <AssemblyName>OLED128x64</AssemblyName>
     <Company>Wilderness Labs, Inc</Company>
     <PackageProjectUrl>http://developer.wildernesslabs.co/Meadow/Meadow.Foundation/</PackageProjectUrl>
-    <PackageId>Meadow.Foundation.FeatherWings.MotorWing</PackageId>
+    <PackageId>Meadow.Foundation.FeatherWings.OLED128x64Wing</PackageId>
     <RepositoryUrl>https://github.com/WildernessLabs/Meadow.Foundation.FeatherWings</RepositoryUrl>
-    <PackageTags>Meadow.Foundation, FeatherWing, MotorWing, Motor Driver</PackageTags>
+    <PackageTags>Meadow.Foundation, FeatherWing, OLED128x64, SH110</PackageTags>
     <Version>1.7.0</Version>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-    <Description>AdaFruit MotorWing motor controller FeatherWing</Description>
+    <Description>AdaFruit OLED 128x64 monochrome display FeatherWing</Description>
   </PropertyGroup>
   <ItemGroup>
     <None Include=".\Readme.md" Pack="true" PackagePath="" />
     <None Include="..\..\icon.png" Pack="true" PackagePath="" />
   </ItemGroup>
   <ItemGroup>
-    <PackageReference Include="Meadow.Foundation.ICs.IOExpanders.Pca9685" Version="1.7.0" />
+    <PackageReference Include="Meadow.Foundation.Displays.Sh1106" Version="1.7.0" />
   </ItemGroup>
 </Project>

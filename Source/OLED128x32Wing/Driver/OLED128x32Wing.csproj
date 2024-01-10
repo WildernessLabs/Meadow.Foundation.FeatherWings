@@ -15,15 +15,15 @@
     <PackageId>Meadow.Foundation.FeatherWings.OLED128x32Wing</PackageId>
     <RepositoryUrl>https://github.com/WildernessLabs/Meadow.Foundation.FeatherWings</RepositoryUrl>
     <PackageTags>Meadow.Foundation, FeatherWing, OLED128x32, SSD1306</PackageTags>
-    <Version>0.1.39</Version>
+    <Version>1.7.0</Version>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <Description>AdaFruit OLED 128x32 monochrome display FeatherWing</Description>
   </PropertyGroup>
   <ItemGroup>
-    <None Include=".\Readme.md" Pack="true" PackagePath=""/>
+    <None Include=".\Readme.md" Pack="true" PackagePath="" />
     <None Include="..\..\icon.png" Pack="true" PackagePath="" />
   </ItemGroup>
   <ItemGroup>
-    <PackageReference Include="Meadow.Foundation.Displays.Ssd130x" Version="1.6.0" />
+    <PackageReference Include="Meadow.Foundation.Displays.Ssd130x" Version="1.7.0" />
   </ItemGroup>
 </Project>

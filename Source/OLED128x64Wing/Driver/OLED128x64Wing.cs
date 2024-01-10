@@ -6,14 +6,14 @@ using System;
 namespace Meadow.Foundation.FeatherWings
 {
     /// <summary>
-    /// Represents Adafruit's 128 x 32 OLED Feather Wing
+    /// Represents Adafruit's 128 x 64 OLED Feather Wing
     /// </summary>
-    public class OLED128x32Wing
+    public class OLED128x64Wing
     {
         /// <summary>
-        /// Returns Ssd1306 object
+        /// Returns SH1107 object
         /// </summary>
-        public Ssd1306 Display { get; protected set; }
+        public Sh1107 Display { get; protected set; }
 
         /// <summary>
         /// Returns button A
@@ -31,20 +31,19 @@ namespace Meadow.Foundation.FeatherWings
         public PushButtonBase ButtonC { get; protected set; }
 
         /// <summary>
-        /// Creates a OLED128x32Wing driver. Buttons will be <see cref="PushButton"/> if capable of the interrupt, or <see cref="PollingPushButton"/> otherwise.
+        /// Creates a OLED128x64Wing driver. Buttons will be <see cref="PushButton"/> if capable of the interrupt, or <see cref="PollingPushButton"/> otherwise.
         /// </summary>
         /// <param name="i2cBus">The I2C bus connected to the wing</param>
         /// <param name="pinA">The pin used for button A. Usually D11 for Feather format Meadow devices.</param>
         /// <param name="pinB">The pin used for button B. Usually D10 for Feather format Meadow devices.</param>
         /// <param name="pinC">The pin used for button C. Usually D09 for Feather format Meadow devices.</param>
-        public OLED128x32Wing(II2cBus i2cBus, IPin pinA, IPin pinB, IPin pinC)
+        public OLED128x64Wing(II2cBus i2cBus, IPin pinA, IPin pinB, IPin pinC)
         {
-            Display = new Ssd1306(i2cBus, (byte)Ssd1306.Addresses.Default, Ssd1306.DisplayType.OLED128x32);
+            Display = new Sh1107(i2cBus, (byte)Sh1107.Addresses.Address_0x3C, width: 64, height: 128, firstColumn: 32);
 
             ButtonA = BestPossiblePushButton(pinA);
             ButtonB = BestPossiblePushButton(pinB);
             ButtonC = BestPossiblePushButton(pinC);
-
         }
 
         // TODO: A version of this method may want to be folded into Meadow.Foundation directly?
@@ -65,6 +64,5 @@ namespace Meadow.Foundation.FeatherWings
                 return new PollingPushButton(pin) { LongClickedThreshold = TimeSpan.Zero };
             }
         }
-
     }
 }
