@@ -1,5 +1,6 @@
 <Project Sdk="Meadow.Sdk/1.1.0">
   <PropertyGroup>
+    <Version>1.8.0</Version>
     <PackageReadmeFile>Readme.md</PackageReadmeFile>
     <Nullable>enable</Nullable>
     <LangVersion>10.0</LangVersion>
@@ -15,7 +16,6 @@
 	  <PackageId>Meadow.Foundation.FeatherWings.NineDofImuWing</PackageId>
 	  <RepositoryUrl>https://github.com/WildernessLabs/Meadow.Foundation.FeatherWings</RepositoryUrl>
 	  <PackageTags>Meadow.Foundation,FeatherWing,IMU,degrees,9DOF</PackageTags>
-    <Version>1.7.0</Version>
 	  <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
 	  <Description>AdaFruit I2C ST 9-DoF IMU FeatherWing</Description>
   </PropertyGroup>
@@ -24,7 +24,7 @@
 	<None Include="..\..\icon.png" Pack="true" PackagePath="" />
   </ItemGroup>
   <ItemGroup>
-    <PackageReference Include="Meadow.Foundation.Sensors.Motion.Lis3mdl" Version="1.7.0" />
-    <PackageReference Include="Meadow.Foundation.Sensors.Motion.Lsm6dsox" Version="1.7.0" />
+    <PackageReference Include="Meadow.Foundation.Sensors.Motion.Lis3mdl" Version="1.8.0" />
+    <PackageReference Include="Meadow.Foundation.Sensors.Motion.Lsm6dsox" Version="1.8.0" />
   </ItemGroup>
 </Project>
