@@ -2,6 +2,7 @@
 using Meadow.Devices;
 using Meadow.Foundation.FeatherWings;
 using Meadow.Foundation.Graphics;
+using Meadow.Peripherals.Displays;
 using System;
 using System.Threading;
 using System.Threading.Tasks;

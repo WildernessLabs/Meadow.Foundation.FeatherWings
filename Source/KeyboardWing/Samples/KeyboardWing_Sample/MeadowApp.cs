@@ -4,6 +4,7 @@ using Meadow.Foundation.FeatherWings;
 using Meadow.Foundation.Graphics;
 using Meadow.Foundation.Sensors.Hid;
 using Meadow.Hardware;
+using Meadow.Peripherals.Displays;
 using System;
 using System.Threading.Tasks;
 

@@ -3,6 +3,7 @@ using Meadow.Devices;
 using Meadow.Foundation.FeatherWings;
 using Meadow.Foundation.Graphics;
 using Meadow.Hardware;
+using Meadow.Peripherals.Displays;
 using System.Threading.Tasks;
 
 namespace FeatherWings.OLED128x64_Sample
