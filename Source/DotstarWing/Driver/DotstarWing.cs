@@ -1,7 +1,6 @@
-﻿using Meadow.Foundation.Graphics;
-using Meadow.Foundation.Graphics.Buffers;
-using Meadow.Foundation.Leds;
+﻿using Meadow.Foundation.Leds;
 using Meadow.Hardware;
+using Meadow.Peripherals.Displays;
 using static Meadow.Foundation.Leds.Apa102;
 
 namespace Meadow.Foundation.FeatherWings
@@ -9,7 +8,7 @@ namespace Meadow.Foundation.FeatherWings
     /// <summary>
     /// Represents Adafruit's Dotstar feather wing 12x6
     /// </summary>
-    public class DotstarWing : IGraphicsDisplay
+    public class DotstarWing : IPixelDisplay
     {
         readonly Apa102 ledMatrix;
 

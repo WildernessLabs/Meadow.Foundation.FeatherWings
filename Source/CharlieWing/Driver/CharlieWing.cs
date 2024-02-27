@@ -1,7 +1,6 @@
-﻿using Meadow.Foundation.Graphics;
-using Meadow.Foundation.Graphics.Buffers;
-using Meadow.Foundation.ICs.IOExpanders;
+﻿using Meadow.Foundation.ICs.IOExpanders;
 using Meadow.Hardware;
+using Meadow.Peripherals.Displays;
 using System;
 
 namespace Meadow.Foundation.FeatherWings
@@ -9,7 +8,7 @@ namespace Meadow.Foundation.FeatherWings
     /// <summary>
     /// Represents an Adafruit CharliePlex 15x7 feather wing
     /// </summary>
-    public class CharlieWing : IGraphicsDisplay
+    public class CharlieWing : IPixelDisplay
     {
         /// <summary>
         /// Is31fl3731 object to manage the leds

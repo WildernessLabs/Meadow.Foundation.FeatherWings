@@ -1,14 +1,14 @@
-﻿using Meadow.Foundation.Graphics;
-using Meadow.Foundation.Graphics.Buffers;
+﻿using Meadow.Foundation.Graphics.Buffers;
 using Meadow.Foundation.Leds;
 using Meadow.Hardware;
+using Meadow.Peripherals.Displays;
 
 namespace Meadow.Foundation.FeatherWings
 {
     /// <summary>
     /// Represents Adafruits NeoPixel FeatherWing
     /// </summary>
-    public class NeoPixelWing : IGraphicsDisplay
+    public class NeoPixelWing : IPixelDisplay
     {
         /// <summary>
         /// Color mode of display
