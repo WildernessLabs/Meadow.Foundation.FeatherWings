@@ -24,6 +24,6 @@
     <None Include="..\..\icon.png" Pack="true" PackagePath="" />
   </ItemGroup>
   <ItemGroup>
-    <PackageReference Include="Meadow.Foundation.Sensors.Gnss.Mt3339" Version="1.9.0" />
+    <PackageReference Include="Meadow.Foundation.Sensors.Gnss.Mt3339" Version="1.9.0.3" />
   </ItemGroup>
 </Project>
