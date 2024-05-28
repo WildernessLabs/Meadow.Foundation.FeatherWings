@@ -10,10 +10,14 @@ namespace Meadow.Foundation.FeatherWings
     /// </summary>
     public class CharlieWing : IPixelDisplay
     {
+        private const int WidthInPixels = 15;
+        private const int HeightInPixels = 7;
+        private const int MaxFrames = 7;
+
         /// <summary>
-        /// Is31fl3731 object to manage the leds
+        /// Is31fl3731 object to manage the LEDs
         /// </summary>
-        protected readonly Is31fl3731 iS31FL3731;
+        protected readonly Is31fl3731 is31Fl3731;
 
         /// <summary>
         /// Color mode of display
@@ -23,12 +27,12 @@ namespace Meadow.Foundation.FeatherWings
         /// <summary>
         /// Width of display in pixels
         /// </summary>
-        public int Width => 15;
+        public int Width => WidthInPixels;
 
         /// <summary>
         /// Height of display in pixels
         /// </summary>
-        public int Height => 7;
+        public int Height => HeightInPixels;
 
         /// <summary>
         /// The Is31fl3731 active frame 
@@ -53,13 +57,13 @@ namespace Meadow.Foundation.FeatherWings
         /// <param name="address">The I2C address</param>
         public CharlieWing(II2cBus i2cBus, byte address = (byte)Is31fl3731.Addresses.Default)
         {
-            iS31FL3731 = new Is31fl3731(i2cBus, address);
-            iS31FL3731.Initialize();
+            is31Fl3731 = new Is31fl3731(i2cBus, address);
+            is31Fl3731.Initialize();
 
-            for (byte i = 0; i <= 7; i++)
+            for (byte i = 0; i <= MaxFrames; i++)
             {
-                iS31FL3731.SetLedState(i, true);
-                iS31FL3731.Clear(i);
+                is31Fl3731.SetLedState(i, true);
+                is31Fl3731.Clear(i);
             }
         }
 
@@ -69,7 +73,7 @@ namespace Meadow.Foundation.FeatherWings
         /// <param name="updateDisplay">Force a display update if true, false to clear the buffer</param>
         public void Clear(bool updateDisplay = false)
         {
-            iS31FL3731.Clear(Frame);
+            is31Fl3731.Clear(Frame);
         }
 
         /// <summary>
@@ -102,6 +106,11 @@ namespace Meadow.Foundation.FeatherWings
         /// <param name="brightness">The led brightness from 0-255</param>
         public void DrawPixel(int x, int y, byte brightness)
         {
+            if (x < 0 || x >= WidthInPixels || y < 0 || y >= HeightInPixels)
+            {
+                throw new ArgumentOutOfRangeException($"Pixel coordinates ({x}, {y}) are out of bounds.");
+            }
+
             if (x > 7)
             {
                 x = 15 - x;
@@ -112,10 +121,10 @@ namespace Meadow.Foundation.FeatherWings
                 y = 7 - y;
             }
 
-            //Swap
+            // Swap
             (y, x) = (x, y);
 
-            iS31FL3731.SetLedPwm(Frame, (byte)(x + y * 16), brightness);
+            is31Fl3731.SetLedPwm(Frame, (byte)(x + y * 16), brightness);
         }
 
         /// <summary>
@@ -125,7 +134,9 @@ namespace Meadow.Foundation.FeatherWings
         /// <param name="y">The y position in pixels 0 indexed from the top</param>
         public void InvertPixel(int x, int y)
         {
-            throw new NotImplementedException();
+            byte currentBrightness = is31Fl3731.GetLedPwm(Frame, (byte)(x + y * 16));
+            byte invertedBrightness = (byte)(255 - currentBrightness);
+            DrawPixel(x, y, invertedBrightness);
         }
 
         /// <summary>
@@ -185,7 +196,7 @@ namespace Meadow.Foundation.FeatherWings
         /// </summary>
         public void Show()
         {
-            iS31FL3731.DisplayFrame(Frame);
+            is31Fl3731.DisplayFrame(Frame);
         }
 
         /// <summary>
@@ -201,12 +212,12 @@ namespace Meadow.Foundation.FeatherWings
         }
 
         /// <summary>
-        /// Update the display from a specific iS31FL3731 frame
+        /// Update the display from a specific Is31fl3731 frame
         /// </summary>
         /// <param name="frame">The frame to show (0-7)</param>
         public void Show(byte frame)
         {
-            iS31FL3731.DisplayFrame(frame);
+            is31Fl3731.DisplayFrame(frame);
         }
     }
 }
