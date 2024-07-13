@@ -1,8 +1,10 @@
 ﻿using Meadow.Foundation.ICs.IOExpanders;
 using Meadow.Foundation.Servos;
 using Meadow.Hardware;
+using Meadow.Peripherals.Servos;
 using Meadow.Units;
 using System;
+using static Meadow.Foundation.Servos.AngularServo;
 
 namespace Meadow.Foundation.FeatherWings
 {
@@ -46,23 +48,23 @@ namespace Meadow.Foundation.FeatherWings
 
             this.portCount = portCount;
             pca9685 = new Pca9685(i2cBus, frequency, address);
-            pca9685.Initialize();
         }
 
         /// <summary>
         /// Returns the specified servo
         /// </summary>
         /// <param name="portIndex"></param>
-        /// <param name="servoConfig"></param>
-        public Servo GetServo(byte portIndex, ServoConfig servoConfig)
+        /// <param name="minPulseAngle">The pulse angle corresponding to the minimum angle of the servo.</param>
+        /// <param name="maxPulseAngle">The pulse angle corresponding to the maximum angle of the servo.</param>
+        public AngularServo GetServo(byte portIndex, PulseAngle minPulseAngle, PulseAngle maxPulseAngle)
         {
             if ((portIndex < 0) || (portIndex > portCount))
             {
                 throw new ArgumentException($"Servo num must be between 1 and {portCount}", "num");
             }
 
-            var pwm = pca9685.CreatePwmPort(portIndex);
-            var servo = new Servo(pwm, servoConfig);
+            var pwm = pca9685.CreatePwmPort(GetPinForPortIndex(portIndex));
+            var servo = new AngularServo(pwm, minPulseAngle, maxPulseAngle);
 
             return servo;
         }
@@ -71,20 +73,29 @@ namespace Meadow.Foundation.FeatherWings
         /// Returns the specified continues rotation servo
         /// </summary>
         /// <param name="portIndex"></param>
-        /// <param name="servoConfig"></param>
-        /// <returns></returns>
-        /// <exception cref="ArgumentException"></exception>
-        public IContinuousRotationServo GetContinuousRotatioServo(byte portIndex, ServoConfig servoConfig)
+        /// <param name="minimumPulseDuration">The minimum pulse duration for the servo.</param>
+        /// <param name="maximumPulseDuration">The maximum pulse duration for the servo.</param>
+        public IContinuousRotationServo GetContinuousRotatioServo(byte portIndex, TimePeriod minimumPulseDuration, TimePeriod maximumPulseDuration)
         {
-            if ((portIndex < 0) || (portIndex > portCount))
-            {
-                throw new ArgumentException($"Continuous Rotatio Servo num must be between 1 and {portCount}", "num");
-            }
+            var pin = GetPinForPortIndex(portIndex);
 
-            var pwm = pca9685.CreatePwmPort(portIndex);
-            var servo = new ContinuousRotationServo(pwm, servoConfig);
+            var pwm = pca9685.CreatePwmPort(pin);
+            var servo = new ContinuousRotationServo(pwm, minimumPulseDuration, maximumPulseDuration);
 
             return servo;
+        }
+
+        private IPin? GetPinForPortIndex(byte portIndex)
+        {
+            foreach (var pin in pca9685.Pins)
+            {
+                if ((byte)pin.Key == portIndex)
+                {
+                    return pin;
+                }
+            }
+
+            return null;
         }
     }
 }

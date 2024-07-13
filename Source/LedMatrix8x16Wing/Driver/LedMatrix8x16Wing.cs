@@ -156,7 +156,10 @@ namespace Meadow.Foundation.FeatherWings
         {
             Fill(0, 0, Width, Height, fillColor);
 
-            if (updateDisplay) Show();
+            if (updateDisplay)
+            {
+                Show();
+            }
         }
 
         /// <summary>
@@ -174,7 +177,7 @@ namespace Meadow.Foundation.FeatherWings
             {
                 for (int j = 0; j < height; j++)
                 {
-                    DrawPixel(i, j, isColored);
+                    DrawPixel(x + i, y + j, isColored);
                 }
             }
         }
