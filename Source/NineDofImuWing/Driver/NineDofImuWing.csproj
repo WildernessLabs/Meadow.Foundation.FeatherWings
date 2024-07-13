@@ -24,7 +24,7 @@
 	<None Include="..\..\icon.png" Pack="true" PackagePath="" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\..\..\Meadow.Foundation\Source\Meadow.Foundation.Peripherals\Sensors.Motion.Lis3Mdl\Driver\Sensors.Motion.Lis3Mdl.csproj" />
-    <ProjectReference Include="..\..\..\..\Meadow.Foundation\Source\Meadow.Foundation.Peripherals\Sensors.Motion.Lsm6Dsox\Driver\Sensors.Motion.Lsm6Dsox.csproj" />
+    <PackageReference Include="Meadow.Foundation.Sensors.Motion.Lis3mdl" Version="1.12.8" />
+    <PackageReference Include="Meadow.Foundation.Sensors.Motion.Lsm6dsox" Version="1.12.8" />
   </ItemGroup>
 </Project>
