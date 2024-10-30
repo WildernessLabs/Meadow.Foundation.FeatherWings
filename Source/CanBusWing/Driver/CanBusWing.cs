@@ -19,5 +19,21 @@ namespace Meadow.Foundation.FeatherWings
                   interruptPort: feather.Pins.D10.CreateDigitalInterruptPort(InterruptMode.EdgeFalling),
                   oscillator: CanOscillator.Osc_16MHz)
         { }
+
+        /// <summary>
+        /// Creates a CanBusWing driver
+        /// </summary>
+        public CanBusWing(
+            ISpiBus spiBus,
+            IPin chipSelectPin,
+            IPin? interruptPin = null,
+            IPin? resetPin = null)
+            : base(
+                  bus: spiBus,
+                  chipSelectPin: chipSelectPin,
+                  interruptPin: interruptPin,
+                  resetPin: resetPin,
+                  oscillator: CanOscillator.Osc_16MHz)
+        { }
     }
 }
