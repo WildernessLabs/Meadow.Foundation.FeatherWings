@@ -10,15 +10,6 @@ For more information on developing for Meadow, visit [developer.wildernesslabs.c
 
 To view all Wilderness Labs open-source projects, including samples, visit [github.com/wildernesslabs](https://github.com/wildernesslabs/).
 
-## Setup
-
-Since the NeoPixel uses the WS2812 LED driver the NeoPixel FeatherWing can be controlled via the SPI COPI (MOSI) pin. 
-
-Out of box the FeatherWing control pin is not mapped to the correct pin to allow it to be plug-and-ply with the F7 headers. The FeatherWing has many jumpers on the bottom to allow for changing the control pin to match your scenario.
-Instructions on changing the control pin can be found with the [pinouts](https://learn.adafruit.com/adafruit-neopixel-featherwing/pinouts).
-
-In order to align with the headers on the F7 the control pin on the FeatherWing should be changed to pin #12 [schematic](https://learn.adafruit.com/adafruit-neopixel-featherwing/download). 
-
 ## Installation
 
 You can install the library from within Visual studio using the the NuGet Package Manager or from the command line using the .NET CLI:
