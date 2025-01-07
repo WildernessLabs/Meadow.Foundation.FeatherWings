@@ -1,7 +1,6 @@
 <Project Sdk="Meadow.Sdk/1.1.0">
   <PropertyGroup>
     <Version>1.11.0</Version>
-    <PackageReadmeFile>Readme.md</PackageReadmeFile>
     <Nullable>enable</Nullable>
     <LangVersion>10.0</LangVersion>
     <PackageLicenseExpression>Apache-2.0</PackageLicenseExpression>
@@ -10,20 +9,21 @@
     <Authors>Wilderness Labs, Inc</Authors>
     <TargetFramework>netstandard2.1</TargetFramework>
     <OutputType>Library</OutputType>
-    <AssemblyName>CharlieWing</AssemblyName>
+    <AssemblyName>CanBusWing</AssemblyName>
     <Company>Wilderness Labs, Inc</Company>
     <PackageProjectUrl>http://developer.wildernesslabs.co/Meadow/Meadow.Foundation/</PackageProjectUrl>
-    <PackageId>Meadow.Foundation.FeatherWings.CharlieWing</PackageId>
+    <PackageId>Meadow.Foundation.FeatherWings.CanBusWing</PackageId>
     <RepositoryUrl>https://github.com/WildernessLabs/Meadow.Foundation.FeatherWings</RepositoryUrl>
-    <PackageTags>Meadow.Foundation, FeatherWing, CharlieWing, CharliePlex, IS31FL3731</PackageTags>
+    <PackageTags>Meadow.Foundation, CanBusWing, CAN</PackageTags>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-    <Description>AdaFruit CharlieWing Matrix LED FeatherWing</Description>
+    <Description>AdaFruit CAN Bus FeatherWing</Description>
   </PropertyGroup>
   <ItemGroup>
     <None Include=".\Readme.md" Pack="true" PackagePath="" />
     <None Include="..\..\icon.png" Pack="true" PackagePath="" />
   </ItemGroup>
-  <ItemGroup>
-    <PackageReference Include="Meadow.Foundation.ICs.IOExpanders.Is31fl3731" Version="2.0.0.3" />
-  </ItemGroup>
+    <ItemGroup>
+    <PackageReference Include="Meadow.F7" Version="2.0.0.3" />
+    <PackageReference Include="Meadow.Foundation.ICs.CAN.Mcp2515" Version="2.0.0.3" />
+    </ItemGroup>
 </Project>

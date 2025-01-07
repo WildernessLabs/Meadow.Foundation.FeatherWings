@@ -1,8 +1,8 @@
-# Meadow.Foundation.FeatherWings.ServoWing
+# Meadow.Foundation.FeatherWings.CanBusWing
 
-**AdaFruit ServoWing servo controller FeatherWing**
+**AdaFruit CAN Bus FeatherWing**
 
-The **ServoWing** library is included in the **Meadow.Foundation.FeatherWings.ServoWing** nuget package and is designed for the [Wilderness Labs](www.wildernesslabs.co) Meadow .NET IoT platform.
+The **CanBusWing** library is included in the **Meadow.Foundation.FeatherWings.CanBusWing** nuget package and is designed for the [Wilderness Labs](www.wildernesslabs.co) Meadow .NET IoT platform.
 
 This driver is part of the [Meadow.Foundation](https://developer.wildernesslabs.co/Meadow/Meadow.Foundation/) peripherals library, an open-source repository of drivers and libraries that streamline and simplify adding hardware to your C# .NET Meadow IoT applications.
 
@@ -14,45 +14,58 @@ To view all Wilderness Labs open-source projects, including samples, visit [gith
 
 You can install the library from within Visual studio using the the NuGet Package Manager or from the command line using the .NET CLI:
 
-`dotnet add package Meadow.Foundation.FeatherWings.ServoWing`
+`dotnet add package Meadow.Foundation.FeatherWings.CanBusWing`
 ## Usage
 
 ```csharp
-ServoWing servoWing;
-AngularServo servo;
+private CanBusWing wing;
 
 public override Task Initialize()
 {
-    Console.WriteLine("Initializng ...");
+    Console.WriteLine("Initialize...");
 
-    servoWing = new ServoWing(Device.CreateI2cBus(I2cBusSpeed.FastPlus));
-
-    servo = servoWing.GetServo(0,
-        new AngularServo.PulseAngle(NamedServoConfigs.SG90.MinimumAngle, new TimePeriod(NamedServoConfigs.SG90.MinimumPulseDuration, TimePeriod.UnitType.Milliseconds)),
-        new AngularServo.PulseAngle(NamedServoConfigs.SG90.MaximumAngle, new TimePeriod(NamedServoConfigs.SG90.MaximumPulseDuration, TimePeriod.UnitType.Milliseconds)));
+    wing = new CanBusWing(Device);
 
     return Task.CompletedTask;
 }
 
 public override async Task Run()
 {
+    var bus = wing.CreateCanBus(CanBitrate.Can_250kbps);
+
+    Console.WriteLine($"Listening for CAN data...");
+
+    var tick = 0;
+
     while (true)
     {
-        Console.WriteLine("0");
-        servo.RotateTo(new Angle(0, AU.Degrees));
-        await Task.Delay(1000);
+        var frame = bus.ReadFrame();
+        if (frame != null)
+        {
+            if (frame is StandardDataFrame sdf)
+            {
+                Console.WriteLine($"Standard Frame: {sdf.ID:X3} {BitConverter.ToString(sdf.Payload)}");
+            }
+            else if (frame is ExtendedDataFrame edf)
+            {
+                Console.WriteLine($"Extended Frame: {edf.ID:X8} {BitConverter.ToString(edf.Payload)}");
+            }
+        }
+        else
+        {
+            await Task.Delay(100);
+        }
 
-        Console.WriteLine("45");
-        servo.RotateTo(new Angle(45, AU.Degrees));
-        await Task.Delay(1000);
+        if (tick++ % 50 == 0)
+        {
+            Console.WriteLine($"Sending Standard Frame...");
 
-        Console.WriteLine("90");
-        servo.RotateTo(new Angle(90, AU.Degrees));
-        await Task.Delay(1000);
-
-        Console.WriteLine("135");
-        servo.RotateTo(new Angle(135, AU.Degrees));
-        await Task.Delay(1000);
+            bus.WriteFrame(new StandardDataFrame
+            {
+                ID = 0x700,
+                Payload = new byte[] { 0x01, 0x02, 0x03, 0x04, 0x05, 0x06, 0x07, (byte)(tick & 0xff) }
+            });
+        }
     }
 }
 

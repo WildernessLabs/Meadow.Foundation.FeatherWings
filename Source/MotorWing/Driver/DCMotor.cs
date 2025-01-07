@@ -1,136 +1,85 @@
 ﻿using Meadow.Foundation.ICs.IOExpanders;
-using System;
+using Meadow.Hardware;
+using static Meadow.Foundation.FeatherWings.MotorWing;
 
 namespace Meadow.Foundation.FeatherWings
 {
     /// <summary>
-    /// Motor commands
-    /// </summary>
-    public enum Commmand
-    {
-        /// <summary>
-        /// Move forward
-        /// </summary>
-        FORWARD,
-        /// <summary>
-        /// Move backwards
-        /// </summary>
-        BACKWARD,
-        /// <summary>
-        /// Release
-        /// </summary>
-        RELEASE
-    }
-
-    /// <summary>
     /// Represents a DC Motor
     /// </summary>
-    public class DCMotor : Motor
+    public class DCMotor
     {
-        readonly byte _pwmPin;
-        readonly byte _in1;
-        readonly byte _in2;
+        private readonly IPwmPort pwmPort;
+        private readonly IDigitalOutputPort in1;
+        private readonly IDigitalOutputPort in2;
+
+        readonly Pca9685 controller;
 
         /// <summary>
         /// Creates a DCMotor driver
         /// </summary>
-        /// <param name="num"></param>
-        /// <param name="pca9685"></param>
-        /// <exception cref="ArgumentException"></exception>
-        public DCMotor(short num, Pca9685 pca9685) : base(pca9685)
+        public DCMotor(DCMotorIndex motorIndex, Pca9685 pca9685)
         {
+            controller = pca9685;
 
-            if (num < 0 || num > 3)
+            switch (motorIndex)
             {
-                throw new ArgumentException("Motor must be between 0 and 3");
+                case DCMotorIndex.Motor1:
+                    pwmPort = controller.Pins.LED8.CreatePwmPort(pca9685.Frequency);
+                    in1 = controller.Pins.LED10.CreateDigitalOutputPort();
+                    in2 = controller.Pins.LED9.CreateDigitalOutputPort();
+                    break;
+                case DCMotorIndex.Motor2:
+                    pwmPort = controller.Pins.LED13.CreatePwmPort(pca9685.Frequency);
+                    in1 = controller.Pins.LED11.CreateDigitalOutputPort();
+                    in2 = controller.Pins.LED12.CreateDigitalOutputPort();
+                    break;
+                case DCMotorIndex.Motor3:
+                    pwmPort = controller.Pins.LED2.CreatePwmPort(pca9685.Frequency);
+                    in1 = controller.Pins.LED4.CreateDigitalOutputPort();
+                    in2 = controller.Pins.LED3.CreateDigitalOutputPort();
+                    break;
+                case DCMotorIndex.Motor4:
+                    pwmPort = controller.Pins.LED7.CreatePwmPort(pca9685.Frequency);
+                    in1 = controller.Pins.LED5.CreateDigitalOutputPort();
+                    in2 = controller.Pins.LED6.CreateDigitalOutputPort();
+                    break;
             }
 
-            switch (num)
-            {
-                case 0:
-                    _pwmPin = 8;
-                    _in2 = 9;
-                    _in1 = 10;
-                    break;
-                case 1:
-                    _pwmPin = 13;
-                    _in2 = 12;
-                    _in1 = 11;
-                    break;
-                case 2:
-                    _pwmPin = 2;
-                    _in2 = 3;
-                    _in1 = 4;
-                    break;
-                case 3:
-                    _pwmPin = 7;
-                    _in2 = 6;
-                    _in1 = 5;
-                    break;
-
-            }
-
-            Run(Commmand.RELEASE);
-
+            Run(Direction.Release);
         }
 
         /// <summary>
         /// Controls the motor direction/action
         /// </summary>
         /// <param name="command">The action</param>
-        public virtual void Run(Commmand command)
+        public virtual void Run(Direction command)
         {
-            if (command == Commmand.FORWARD)
+            if (command == Direction.Forward)
             {
-                pca9685.SetPin(_in2, false);
-                pca9685.SetPin(_in1, true);
+                in1.State = true;
+                in2.State = false;
+            }
+            else if (command == Direction.Reverse)
+            {
+                in1.State = false;
+                in2.State = true;
             }
 
-            if (command == Commmand.BACKWARD)
+            if (command == Direction.Release)
             {
-                pca9685.SetPin(_in2, true);
-                pca9685.SetPin(_in1, false);
-            }
-
-            if (command == Commmand.RELEASE)
-            {
-                pca9685.SetPin(_in1, false);
-                pca9685.SetPin(_in2, false);
+                in1.State = false;
+                in2.State = false;
             }
         }
 
         /// <summary>
         /// Control the DC Motor speed/throttle
         /// </summary>
-        /// <param name="speed">The 8-bit PWM value, 0 is off, 255 is on</param>
-        public override void SetSpeed(short speed)
+        /// <param name="speed">0 is off, 1 is on</param>
+        public void SetSpeed(double speed)
         {
-            if (speed < 0)
-            {
-                speed = 0;
-            }
-
-            if (speed > 255)
-            {
-                speed = 255;
-            }
-
-            pca9685.SetPwm(_pwmPin, 0, speed * 16);
-        }
-
-        /// <summary>
-        /// Control the DC Motor speed/throttle
-        /// </summary>
-        /// <param name="speed">The 12-bit PWM value, 0 is off, 4096 is on</param>
-        public void PreciseSpeed(short speed)
-        {
-            if (speed > 4096)
-                speed = 4096;
-
-            if (speed < 0)
-                speed = 0;
-
-            pca9685.SetPwm(_pwmPin, 0, speed);
+            pwmPort.DutyCycle = speed;
         }
 
         /// <summary>
@@ -138,8 +87,8 @@ namespace Meadow.Foundation.FeatherWings
         /// </summary>
         public void Stop()
         {
-            Run(Commmand.RELEASE);
-            pca9685.SetPwm(_pwmPin, 0, 0);
+            Run(Direction.Release);
+            pwmPort.DutyCycle = 0;
         }
     }
 }
